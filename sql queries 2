@@ -1,0 +1,4 @@
+#SQL to display employees who started working after the employee whose employee_id is 113
+SELECT E.FIRST_NAME,E.LAST_NAME,E.HIRE_DATE
+              FROM EMPLOYEES E 
+              WHERE E.HIRE_DATE> (SELECT E1.HIRE_DATE FROM EMPLOYEES E1 WHERE EMPLOYEE_ID=113)
