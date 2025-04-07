@@ -1,0 +1,10 @@
+#SQL that returns employees whose salary is greater than the average monthly salary for the department
+with t as
+(select department_id,avg(salary) as orta from employees group by department_id)
+  
+select e.department_id,
+e.first_name,
+e.last_name,
+e.salary from employees e inner join  (select department_id,avg(salary) as orta from employees group by department_id) dep_av
+on e.department_id=dep_av.department_id inner join (select job_id,avg(salary) as avg_s from employees group by job_id) JOB_av 
+on e.job_id=JOB_av.job_id where e.salary>dep_av.orta and e.salary>JOB_av.avg_s
