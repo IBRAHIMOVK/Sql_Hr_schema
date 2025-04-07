@@ -1,5 +1,5 @@
 
-# Sql_Hr_schema
+# SQL HR Schema Portfolio
 with t as
 (select Department_id, Sum(salary) as department_salary,(select  sum(salary) as SUM_SALARY from employees ) AS sum_salary from employees group by department_id)
 
